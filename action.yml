@@ -1,0 +1,18 @@
+name: 'Go Releasr'
+description: 'Github Action that allows you to commit local changes & tag Go repositories'
+inputs:
+  version_metadata_path:
+    description: 'Path to file containing Version string'
+    required: true
+    default: 'pkg/version/version.go'
+outputs:
+  version: # id of output
+    description: 'Version that was written to files'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    PACKAGR_VERSION_METADATA_PATH: ${{ inputs.version_metadata_path }}
+branding:
+  icon: 'tag'
+  color: 'blue'
