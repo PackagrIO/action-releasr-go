@@ -12,6 +12,9 @@ curl -L -o /srv/packagr/packagr-releasr $asset_url
 # make releasr executable
 chmod +x /srv/packagr/packagr-releasr
 
+if [[ ! -z "${CUSTOM_WORKING_DIRECTORY}" ]]; then
+  cd "${CUSTOM_WORKING_DIRECTORY}"
+fi
 
 echo "Starting Releasr $1"
 packagr-releasr start --scm github --package_type golang

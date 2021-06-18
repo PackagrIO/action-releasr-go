@@ -13,9 +13,10 @@ inputs:
     description: 'Commit Author Email'
     required: true
     default: 'packagr-io[bot]@users.noreply.github.com'
-outputs:
-  version: # id of output
-    description: 'Version that was written to files'
+  cwd:
+    description: 'Working Directory'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -23,6 +24,7 @@ runs:
     PACKAGR_VERSION_METADATA_PATH: ${{ inputs.version_metadata_path }}
     PACKAGR_ENGINE_GIT_AUTHOR_NAME: ${{ inputs.author_name }}
     PACKAGR_ENGINE_GIT_AUTHOR_EMAIL: ${{ inputs.author_email }}
+    CUSTOM_WORKING_DIRECTORY: ${{ inputs.cwd }}
 branding:
   icon: 'tag'
   color: 'blue'
